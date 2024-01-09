@@ -8,6 +8,7 @@ const app = express()
 const path = require('path')
 const session = require('express-session')
 const mongoose = require('mongoose')
+mongoose.connect(dbUrl)
 const methodOverride = require("method-override")
 const ejsMate = require("ejs-mate")
 const catchAsync = require("./utils/catchAsync")
@@ -23,10 +24,8 @@ const MongoStore = require("connect-mongo")
 const store = MongoStore.create({
     mongoUrl: dbUrl,
     touchAfter: 24 * 60 * 60,
-    crypto: {
-        secret: 'secretword'
-    }
-})
+    secret: 'secretword'
+});
 
 app.use(session({
     store,
@@ -60,7 +59,7 @@ const campgroundRoutes = require('./routes/campgrounds')
 const reviewRoutes = require('./routes/reviews')
 const userRoutes = require('./routes/users')
 
-mongoose.connect(dbUrl)
+
 
 const db = mongoose.connection;
     db.on('error', console.error.bind(console, "connection error:"))
