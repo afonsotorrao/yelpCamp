@@ -13,7 +13,7 @@ const sample = (array) => array[Math.floor(Math.random() * array.length)]
 
 const seedDB = async () => {
     await Campground.deleteMany({});
-    for(let i = 0; i<150; i++){
+    for(let i = 0; i<175; i++){
         let random1000 = Math.floor(Math.random() * 1000)
         let randomPrice =  Math.floor(Math.random() * 25 + 10)
         const camp = new Campground({
