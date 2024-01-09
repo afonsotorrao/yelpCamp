@@ -18,12 +18,14 @@ const passport = require('passport')
 const localStrategy = require('passport-local')
 const User = require('./models/user')
 const mongoSanitize = require('express-mongo-sanitize')
-const MongoDBStore = require("connect-mongo")(session)
+const MongoStore = require("connect-mongo")
 
-const store = new MongoDBStore({
-    url: dbUrl,
-    secret: 'secretword',
-    touchAfter: 24 * 60 * 60
+const store = MongoStore.create({
+    mongoUrl: dbUrl,
+    touchAfter: 24 * 60 * 60,
+    crypto: {
+        secret: 'secretword'
+    }
 })
 
 app.use(session({
