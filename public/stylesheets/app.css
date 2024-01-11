@@ -1,5 +1,142 @@
-#cluster-map, #map {
+#cluster-map {
     width: 100%;
     height: 30vh;
+}
+
+#map {
+    width: 100%;
+    height: 20vh;
+}
+
+.main {
+    overflow-y: scroll;
+    height:70vh
+}
+
+@media(width < 768px){
+    #override-nav{
+        justify-content:space-between!important
+    }
+
+    #override-nav a {
+        margin: 0px;
+        padding-top:20px
+    }
+
+    .custom-width{
+        max-width:90vw
+    }
+
+    .override-header {
+        margin-bottom:25vh!important
+    }
+
+    .px-3 a {
+        margin-top: 40px
+    }
+
+    .px-3 p {
+        margin-top: 20px
+    }
+
+    #cluster-map {
+        width:90%;
+        height:20vh;
+        margin-left:auto;
+        margin-right:auto
+    }
+
+    .override-main {
+        margin-top: 2rem!important
+    }
+
+    .main, .card img {
+        width:75vw
+    }
+
+    .main, .card p {
+        margin-bottom: 0.2rem!important;
+        font-size: 12px
+    }
+
+    .main, .card h5 {
+        font-size: 18px
+    }
+
+    .override-btn {
+        float: right;
+        font-size: 14px;
+        margin-bottom:0.5rem;
+        margin-top: 0.5rem!important
+        
+    }
+
+    .override-text{
+        font-size:14px
+    }
+
+    .list-group li, .card-footer {
+        font-size: 12px
+    }
+
+    .h2 {
+        text-align: center;
+        margin-top:10px;
+        font-size:20px;
+        font-weight:700
+    }
+
+    
+
+    .star-div fieldset{
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #submitBtn{
+        float: right
+    }
+
+}
+
+@media(width>768px){
+    .override-btn {
+        width: 15vw;
+    }
+}
+
+.override-hover:hover{
+    opacity: 70%
+}
+
+i{
+    margin-right: 8px
+}
+
+.clearfix{
+    clear:both
+}
+
+.override-text {
+    margin-bottom:5vh!important
+}
+
+.reviews-div {
+    overflow-y:scroll;
+    height: 60vh;
+    padding: 0!important
+}
+
+.starability-basic{
+    min-height: 0px!important;
+    margin: 10px 0px
+}
+
+@media((min-width:768px) and (max-width:1400px)){
+    .override-img{
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
 }
 

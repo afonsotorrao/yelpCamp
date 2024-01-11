@@ -34,3 +34,8 @@ body {
     color: #333;
     text-shadow: none;
 }
+
+@media(width > 768px){
+    .px-3 a, p {
+    margin: 40px
+}}

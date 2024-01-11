@@ -4,7 +4,7 @@
     container: 'map', // container ID
     style: 'mapbox://styles/mapbox/light-v11', // style URL
     center: campground.geometry.coordinates, // starting position [lng, lat]
-    zoom: 11, // starting zoom
+    zoom: 10, // starting zoom
   });
 
   map.addControl(new mapboxgl.NavigationControl());

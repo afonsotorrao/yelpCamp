@@ -1,7 +1,7 @@
 <% layout('layouts/boilerplate')%>
 <link rel="stylesheet" href="/stylesheets/stars.css">
     <div class="row">
-        <div class="col-6">
+        <div class="col-12 col-md-6">
           <div id="carouselExample" class="carousel slide">
             <div class="carousel-inner">
               <% campground.images.forEach((img, i) => { %>
@@ -27,9 +27,9 @@
                 <p class="card-text"><%= campground.description%></p>
               </div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item">Submitted by <%= campground.author.username%></li>
-                <li class="list-group-item text-muted"><%= campground.location%></li>
-                <li class="list-group-item text-muted">$<%= campground.price%>/night</li>
+                <li class="list-group-item"><i class="fa fa-user" aria-hidden="true"></i> <%= campground.author.username%></li>
+                <li class="list-group-item text-muted"><i class="fa fa-map-marker" aria-hidden="true"></i> <%= campground.location%></li>
+                <li class="list-group-item text-muted"><i class="fa fa-usd" aria-hidden="true"></i> <%= campground.price%>/night</li>
               </ul>
               <% if(currentUser && campground.author.equals(currentUser._id)) { %>
               <div class="card-body">
@@ -45,12 +45,15 @@
             </div>
           </div>
             
-        <div class="col-6">
+        <div class="col-12 col-md-6">
           <div id="map" class="mb-3"></div>
           <% if(currentUser) { %>
-          <h2>Leave a Review</h2>
-                <form class = "mb-3 validated-form" action="/campgrounds/<%=campground._id%>/reviews" method = "post" novalidate>
-                  <div class="">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle mb-2" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+              Leave a Review
+            </button>
+                <form class = "mb-3 mt-1 validated-form dropdown-menu px-4 py-3 w-100" aria-labelledby="dropdownMenuButton2" action="/campgrounds/<%=campground._id%>/reviews" method = "post" novalidate>
+                  <div class="star-div">
                     <fieldset class="starability-basic">
                       <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="1" checked aria-label="No rating." />
                       <input type="radio" id="first-rate1" name="rating" value="1" />
@@ -66,14 +69,17 @@
                     </fieldset>
                   </div>
                   <div class="mb-3">
-                    <label for="body" class="form-label">Review</label>
+                    <label for="body" class="form-label"></label>
                     <textarea class = "form-control" name="body" id="body" cols="30" rows="3" required></textarea>
                     <div class="valid-feedback">Looks good!</div>
                     <div class="invalid-feedback">Please provide a review.</div>
                   </div>
-                  <button class = "btn btn-success mb-5">Submit</button>
+                  <button id = "submitBtn" class = "btn btn-success mb-3">Submit</button>
                 </form>
+            </div>
+                <div class="clearfix"></div>
                 <% } %>
+                <div class="container reviews-div mt-2 mb-2">
                   <% for (let review of campground.reviews)  { %>
                     <div class="card mb-3">
                       <div class="card-body">
@@ -88,6 +94,7 @@
                       </div>
                     </div>
                   <% } %>
+                </div>
         </div>
     </div>
 

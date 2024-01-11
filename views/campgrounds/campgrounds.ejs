@@ -1,28 +1,28 @@
 <% layout('layouts/boilerplate')%>
     <div class="mb-3" id="cluster-map"></div>
     <h1 class = "text-center mb-3">All Campgrounds</h1>
-    <div class="container mb-3" style = 'overflow-y:scroll; height: 70vh'>
+    <div class="container mb-3 main w-100">
         <% for(let campground of campgrounds) {%>
             <div class="card mb-3">
                 <div class="row">
                     <div class="col-md-4">
                         <% if(campground.images.length) {%>
-                        <img class = "img-fluid" src="<%= campground.images[0].url%>" alt="">
+                        <img class = "override-img img-fluid" src="<%= campground.images[0].url%>" alt="">
                         <% } else { %>
-                        <img class = "img-fluid" src="https://res.cloudinary.com/dbibmixtr/image/upload/v1704638447/YelpCamp/n1h96pvkwsnwhqdayjgu.jpg" alt="">
+                        <img class = "override-img img-fluid" src="https://res.cloudinary.com/dbibmixtr/image/upload/v1704638447/YelpCamp/n1h96pvkwsnwhqdayjgu.jpg" alt="">
                         <% } %>
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
                             <h5 class="card-title"> <%= campground.title %> </h5>
-                            <p class="card-text"> <%= campground.description %> </p>
-                            <p class="card-text">
-                                <small class="text-muted"><%= campground.location %></small>
+                            <p class="card-text override-text"> <%= campground.description %> </p>
+                            <p class="card-text mb-0">
+                                <small class="text-muted"><i class="fa fa-map-marker" aria-hidden="true"></i><%= campground.location %></small>
                             </p>
-                            <p class="card-text">
-                                <small class="text-muted">$<%= campground.price %></small>
+                            <p class="card-text mb-2">
+                                <small class="text-muted"><i class="fa fa-usd" aria-hidden="true"></i><%= campground.price %></small>
                             </p>
-                            <a class="btn btn-primary" href = "/campgrounds/<%=campground._id%>">View Details</a>
+                            <a class="btn btn-primary override-btn mt-3 mt-xl-2" href = "/campgrounds/<%=campground._id%>">View Details</a>
                         </div>
                     </div>
                 </div>
